@@ -18,6 +18,7 @@ namespace MOD_SmartSchool.ePaper.Course
         private BackgroundWorker _loader;
         private string _CurrentID;
         private string _RunningID;
+        private string _TargetName; //added by Cloud
 
         private string ViewerType { get { return "Course"; } }
 
@@ -61,6 +62,8 @@ namespace MOD_SmartSchool.ePaper.Course
         private void _loader_DoWork(object sender, DoWorkEventArgs e)
         {
             string running_id = e.Argument as string;
+            K12.Data.CourseRecord course = K12.Data.Course.SelectByID(running_id); //added by Cloud
+            _TargetName = course.Name; //added by Cloud
             try
             {
                 e.Result = QueryElectronicPaper.GetPaperItemByViewer(ViewerType, running_id).GetContent();
@@ -130,7 +133,11 @@ namespace MOD_SmartSchool.ePaper.Course
             string id = "" + row.Cells[colID.Index].Value;
             try
             {
+                String before = row.Cells[colPaperName.Index].Value.ToString(); //added by Cloud
+                String date = row.Cells[colTimestamp.Index].Value.ToString(); //added by Cloud
                 EditElectronicPaper.DeletePaperItem(id);
+                //added by Cloud
+                FISCA.LogAgent.ApplicationLog.Log("課程電子報表", "刪除", "課程 " + _TargetName + " 的電子報表「" + before + "」(製表日期:" + date + ")被刪除");
             }
             catch (Exception ex)
             {

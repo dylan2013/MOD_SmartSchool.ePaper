@@ -66,9 +66,9 @@
             this.dgvPaperList.AllowUserToAddRows = false;
             this.dgvPaperList.AllowUserToDeleteRows = false;
             this.dgvPaperList.AllowUserToResizeRows = false;
-            this.dgvPaperList.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.dgvPaperList.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.dgvPaperList.BackgroundColor = System.Drawing.Color.White;
             this.dgvPaperList.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.dgvPaperList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -84,6 +84,7 @@
             this.colTimestamp});
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("微軟正黑體", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
             dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.ControlText;
@@ -180,9 +181,14 @@
             // 
             this.labelX1.AutoSize = true;
             this.labelX1.BackColor = System.Drawing.Color.Transparent;
+            // 
+            // 
+            // 
+            this.labelX1.BackgroundStyle.Class = "";
+            this.labelX1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.labelX1.Location = new System.Drawing.Point(8, 9);
             this.labelX1.Name = "labelX1";
-            this.labelX1.Size = new System.Drawing.Size(47, 19);
+            this.labelX1.Size = new System.Drawing.Size(47, 21);
             this.labelX1.TabIndex = 4;
             this.labelX1.Text = "學年度";
             // 
@@ -190,9 +196,14 @@
             // 
             this.labelX2.AutoSize = true;
             this.labelX2.BackColor = System.Drawing.Color.Transparent;
+            // 
+            // 
+            // 
+            this.labelX2.BackgroundStyle.Class = "";
+            this.labelX2.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.labelX2.Location = new System.Drawing.Point(217, 9);
             this.labelX2.Name = "labelX2";
-            this.labelX2.Size = new System.Drawing.Size(34, 19);
+            this.labelX2.Size = new System.Drawing.Size(34, 21);
             this.labelX2.TabIndex = 4;
             this.labelX2.Text = "學期";
             // 
@@ -276,6 +287,7 @@
             this.colName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.colName.HeaderText = "名稱";
             this.colName.Name = "colName";
+            this.colName.ReadOnly = true;
             // 
             // colOverview
             // 
@@ -313,12 +325,14 @@
             this.colViewerType.FillWeight = 90F;
             this.colViewerType.HeaderText = "對象";
             this.colViewerType.Name = "colViewerType";
+            this.colViewerType.ReadOnly = true;
             this.colViewerType.Width = 90;
             // 
             // colTimestamp
             // 
             this.colTimestamp.HeaderText = "建立時間";
             this.colTimestamp.Name = "colTimestamp";
+            this.colTimestamp.ReadOnly = true;
             this.colTimestamp.Width = 150;
             // 
             // ElectronicPaperManager
@@ -335,6 +349,7 @@
             this.Controls.Add(this.cboSemester);
             this.Controls.Add(this.cboSchoolYear);
             this.Controls.Add(this.dgvPaperList);
+            this.DoubleBuffered = true;
             this.MaximizeBox = true;
             this.Name = "ElectronicPaperManager";
             this.Text = "電子報表管理";

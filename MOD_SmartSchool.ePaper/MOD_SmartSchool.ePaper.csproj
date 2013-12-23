@@ -21,7 +21,7 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>..\..\..\..\..\Documents and Settings\Dylan.Huang\桌面\ischool desktop\addmodules\MOD_SmartSchool.ePaper\</OutputPath>
+    <OutputPath>obj\Debug\bin\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -63,6 +63,10 @@
     </Reference>
     <Reference Include="FISCA.DSAUtil">
       <HintPath>..\..\..\..\..\TFS2010-Git\Library\FISCA.DSAUtil.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="FISCA.LogAgent">
+      <HintPath>library\FISCA.LogAgent.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="FISCA.Permission">
@@ -195,7 +199,21 @@
   <ItemGroup>
     <None Include="Resources\mail_ok_64.png" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Content Include="library\Aspose.Cells.dll" />
+    <Content Include="library\Aspose.Words.dll" />
+    <Content Include="library\FISCA.Authentication.dll" />
+    <Content Include="library\FISCA.dll" />
+    <Content Include="library\FISCA.DSAClient.dll" />
+    <Content Include="library\FISCA.DSAUtil.dll" />
+    <Content Include="library\FISCA.Permission.dll" />
+    <Content Include="library\FISCA.Presentation.dll" />
+    <Content Include="library\FISCA.UDT.dll" />
+    <Content Include="library\K12.Data.dll" />
+    <Content Include="library\K12.Presentation.dll" />
+    <Content Include="library\SmartSchool.ePaper.dll" />
+    <Content Include="library\SmartSchool.ErrorReporting.dll" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

@@ -49,9 +49,9 @@
             this.dgEPaper.AllowUserToAddRows = false;
             this.dgEPaper.AllowUserToDeleteRows = false;
             this.dgEPaper.AllowUserToResizeRows = false;
-            this.dgEPaper.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.dgEPaper.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.dgEPaper.BackgroundColor = System.Drawing.Color.White;
             this.dgEPaper.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.dgEPaper.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -62,6 +62,7 @@
             this.colTimestamp});
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("微軟正黑體", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
             dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.ControlText;
@@ -162,21 +163,17 @@
             // 
             this.saveFileDialog1.Title = "另存新檔";
             // 
-            // ElectronicPaperPalmerworm
+            // Teacher_PaperPalmerworm
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.White;
             this.Controls.Add(this.btnDelete);
             this.Controls.Add(this.btnDownload);
             this.Controls.Add(this.dgEPaper);
-            this.Name = "ElectronicPaperPalmerworm";
+            this.Name = "Teacher_PaperPalmerworm";
             this.Size = new System.Drawing.Size(550, 220);
-            this.Controls.SetChildIndex(this.dgEPaper, 0);
-            this.Controls.SetChildIndex(this.btnDownload, 0);
-            this.Controls.SetChildIndex(this.btnDelete, 0);
             ((System.ComponentModel.ISupportInitialize)(this.dgEPaper)).EndInit();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 

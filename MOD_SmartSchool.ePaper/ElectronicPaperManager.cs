@@ -48,7 +48,7 @@ namespace MOD_SmartSchool.ePaper
             {
                 for (int i = -2; i <= 2; i++) //只顯示前後兩個學年的選項，其他的用手動輸入。
                 {
-                    cboSchoolYear.Items.Add(K12.Data.School.DefaultSchoolYear + i);
+                    cboSchoolYear.Items.Add(Convert.ToInt32(K12.Data.School.DefaultSchoolYear) + i); //modified by Cloud
                 }
 
                 cboSchoolYear.Text = K12.Data.School.DefaultSchoolYear;
@@ -137,30 +137,50 @@ namespace MOD_SmartSchool.ePaper
             if (editor.ShowDialog() != DialogResult.OK)
                 return;
 
+            String before = row.Cells[colName.Index].Value.ToString(); //added by Cloud
+            String target = row.Cells[colViewerType.Index].Value.ToString(); //added by Cloud
+            String date = row.Cells[colTimestamp.Index].Value.ToString(); //added by Cloud
             row.Cells[colName.Index].Value = editor.NewName;
+            String after = row.Cells[colName.Index].Value.ToString(); //added by Cloud
+            //added by Cloud
+            FISCA.LogAgent.ApplicationLog.Log("電子報表管理", "修改", target + "電子報表「" + before + "」(建立日期:" + date + ")改為\r\n「" + after + "」");
             //LoadElectronicPaper(cboSchoolYear.Text, cboSemester.Text);
         }
 
+        //modified by Cloud 支援多筆刪除
         private void btnDelete_Click(object sender, EventArgs e)
         {
             if (dgvPaperList.SelectedRows.Count <= 0) return;
-            DataGridViewRow row = dgvPaperList.SelectedRows[0];
+            //DataGridViewRow row = dgvPaperList.SelectedRows[0];
 
-            if (MsgBox.Show("您確定要刪除「" + row.Cells[colName.Index].Value + "」嗎？", "刪除確認", MessageBoxButtons.YesNo) == DialogResult.No)
-                return;
-
-            try
+            int count = 0; //added by Cloud
+            StringBuilder sb = new StringBuilder(); //added by Cloud
+            DataGridViewSelectedRowCollection rows = dgvPaperList.SelectedRows; //added by Cloud
+            foreach (DataGridViewRow row in rows)
             {
-                EditElectronicPaper.Delete("" + row.Cells[colID.Index].Value);
-            }
-            catch (Exception ex)
-            {
-                SmartSchool.ErrorReporting.ReportingService.ReportException(ex);
-                MsgBox.Show(ex.Message);
-            }
+                if (MsgBox.Show("您確定要刪除「" + row.Cells[colName.Index].Value + "」嗎？", "刪除確認", MessageBoxButtons.YesNo) == DialogResult.No)
+                    continue;
 
+                try
+                {
+                    String before = row.Cells[colName.Index].Value.ToString(); //added by Cloud
+                    String target = row.Cells[colViewerType.Index].Value.ToString(); //added by Cloud
+                    String date = row.Cells[colTimestamp.Index].Value.ToString(); //added by Cloud
+                    EditElectronicPaper.Delete("" + row.Cells[colID.Index].Value);
+                    sb.AppendLine(target + "電子報表「" + before + "」(建立日期:" + date + ")被刪除"); //added by Cloud
+                    count++; //added by Cloud
+                }
+                catch (Exception ex)
+                {
+                    SmartSchool.ErrorReporting.ReportingService.ReportException(ex);
+                    MsgBox.Show(ex.Message);
+                }
+                //dgvPaperList.ClearSelection();
+            }
             LoadElectronicPaper(cboSchoolYear.Text, cboSemester.Text);
-            //dgvPaperList.ClearSelection();
+            //added by Cloud
+            if(count>0)
+            FISCA.LogAgent.ApplicationLog.Log("電子報表管理", "刪除", "刪除 " + count + " 筆電子報表\r\n" + sb.ToString());
         }
 
         private void btnExit_Click(object sender, EventArgs e)

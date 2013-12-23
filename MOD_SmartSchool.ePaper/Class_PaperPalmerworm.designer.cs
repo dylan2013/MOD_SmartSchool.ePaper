@@ -161,21 +161,17 @@
             // 
             this.saveFileDialog1.Title = "另存新檔";
             // 
-            // ElectronicPaperPalmerworm
+            // Class_PaperPalmerworm
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.White;
             this.Controls.Add(this.btnDelete);
             this.Controls.Add(this.btnDownload);
             this.Controls.Add(this.dgEPaper);
-            this.Name = "ElectronicPaperPalmerworm";
+            this.Name = "Class_PaperPalmerworm";
             this.Size = new System.Drawing.Size(550, 220);
-            this.Controls.SetChildIndex(this.dgEPaper, 0);
-            this.Controls.SetChildIndex(this.btnDownload, 0);
-            this.Controls.SetChildIndex(this.btnDelete, 0);
             ((System.ComponentModel.ISupportInitialize)(this.dgEPaper)).EndInit();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
